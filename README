@@ -1,0 +1,22 @@
+open-uri-mapping
+================
+
+a wrapper to open-uri that offers filename mapping, which is useful for test
+
+Usage
+=====
+
+  require 'rubygems'
+  require 'open-uri-mapping'
+
+  URI::Mapping.merge!(
+    "http://merbi.st/plugins/" => "/tmp/plugins1.html"
+  )
+
+  open("http://merbi.st/plugins/")
+  # -> "Errno::ENOENT: No such file or directory - /tmp/plugins1.html"
+
+This error means that it opens file from not http but a specified local file.
+
+
+Copyright (c) 2009 maiha@wota.jp, released under the MIT license
